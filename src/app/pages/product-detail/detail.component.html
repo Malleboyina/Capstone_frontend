@@ -1,0 +1,58 @@
+<h1 align="center" class="display-4 mb-5">{{title}}</h1>
+<div class="row text-center justify-content-center">
+  <div class="col-lg-6 ">
+    <div class="card mb-4 ">
+      <img height="60%" class="card-img-top" src="{{productInfo?.productIcon}}">
+      <div class="card-body">
+        <h4 class="card-title ">{{productInfo?.productName}}</h4>
+        <form name="form" #form='ngForm' (ngSubmit)="productInfo?.productStatus == 0 && addToCart()">
+          <div class="text-left">
+            <input hidden name="productId" [value]=productInfo?.productId>
+            <p class="card-test"><strong>Description: </strong>{{productInfo?.productDescription}}</p>
+            <p class="card-text">
+              <strong>Price: </strong>
+              <label id="price">{{productInfo?.productPrice | currency}}</label>
+            </p>
+            <!-- <p class="card-text">
+              <strong>Deal Price: </strong>
+              <label id="price" >{{productInfo?.productPrice| currency}}</label>
+              <label id="price" *ngIf="productInfo.categoryType==1">{{productInfo?.productPrice*80/100| currency}}</label>
+              <label id="price" *ngIf="productInfo.categoryType==2">{{productInfo?.productPrice*9/10| currency}}</label>
+              <label id="price" *ngIf="productInfo.categoryType==3">{{productInfo?.productPrice*5/10| currency}}</label>
+            </p> -->
+            <p class="card-text"><strong>Stock: </strong>{{productInfo?.productStock}}</p>
+
+            <label class="card-text">
+              <strong>Quantity: </strong>
+              <input [(ngModel)]=count
+                     (change)="validateCount()"
+                     type="number"
+                     name="count"
+                     required
+                     min="1"
+                     [max]=productInfo?.productStock
+              >
+            </label>
+
+
+            <p class="card-text"><strong>Subtotal: </strong>
+              <label  id="subtotal">{{count * productInfo?.productPrice | currency}}</label>
+              <!-- <label *ngIf="productInfo.categoryType==1" id="subtotal">{{count * productInfo?.productPrice *80/100| currency}}</label>
+              <label *ngIf="productInfo.categoryType==2" id="subtotal">{{count * productInfo?.productPrice *90/100| currency}}</label>
+              <label *ngIf="productInfo.categoryType==3" id="subtotal">{{count * productInfo?.productPrice *95/100| currency}}</label> -->
+            </p>
+          </div>
+        <i  id="heart" *ngIf="currentUser && addedToWishlist" class='fas fa-heart fa-4x'  (click)="handleRemoveFromWishList(productInfo.productId,currentUser.account)"></i>
+         <i *ngIf="currentUser && !addedToWishlist" class="far fa-heart fa-3x" (click)="handleAddToWishList(productInfo.productId,currentUser.account)"></i>
+         
+          <button style="margin-left: 50px" type="submit" [disabled]="!form.form.valid" *ngIf="productInfo?.productStatus == 0; else offBlock"
+                  class="btn btn-primary btn-lg"
+          >Add to Cart
+          </button>
+          <ng-template #offBlock><a class="btn btn-secondary btn-lg disabled">Unavailable</a></ng-template>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<div>
+<h1 align="center" style="color:green" class="display-3 mb-4">{{title}}</h1>
+<input type = "text"  name="search" style="margin-left: 10px" [(ngModel)]="searchText" placeholder ="search shopforHome" class="display-4 mb-5" text-align="middle" />
+<button style="margin-left: 550px" class="btn btn-primary"  (click)="sort()">SortByPrice</button>
+</div>
+<div class="row card-deck text-center">
+ 
+
+  <div *ngFor="let productInfo of page?.content | filter:searchText" class="col-lg-4 ">
+    <div class="card mb-4"  >
+      <img height="50%" class="card-img-top" src="{{productInfo.productIcon}}" alt="{{productInfo.productName}}">
+      <div class="card-body">
+        <h4 class="card-title ">{{productInfo.productName}}</h4>
+        
+        <div class="text-left">
+          <p class="card-test"><strong>Description: </strong>{{productInfo.productDescription}}</p>
+          <!-- <p class="card-text"><strong>M.R.P: </strong>{{productInfo.productPrice | currency}}</p> -->
+          <p  class="card-text"><strong>Price: </strong>{{productInfo.productPrice|currency}}</p>
+          <!-- <p *ngIf="productInfo.categoryType==1" class="card-text"><strong>Deal Price: </strong>{{productInfo.productPrice*80/100|currency}}</p>
+          <p *ngIf="productInfo.categoryType==2" class="card-text"><strong>Deal Price: </strong>{{productInfo.productPrice*9/10|currency}}</p>
+          <p *ngIf="productInfo.categoryType==3" class="card-text"><strong>Deal Price: </strong>{{productInfo.productPrice*5/10|currency}}</p> -->
+          <p class="card-text"><strong>Stock: </strong>{{productInfo.productStock}}</p>
+        </div>
+        <br>
+        <a routerLink="/product/{{productInfo.productId}}" *ngIf="productInfo.productStatus == 0; else offBlock"
+           class="btn btn-primary btn-lg"
+        >BUY NOW</a>
+        <ng-template #offBlock><a class="btn btn-secondary btn-lg disabled">Unavailable</a></ng-template>
+      </div>
+    </div>
+  </div>
+</div>
+<app-pagination  [currentPage]="page" ></app-pagination>
