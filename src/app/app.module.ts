@@ -24,7 +24,6 @@ import { WishListComponent } from './pages/wish-list/wish-list.component';
 import {ExcelService} from './services/ExcelService'
 import { AngularFileUploaderModule } from "angular-file-uploader";
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { MailComponent } from './mail/mail.component';
 import { EmailComponent } from './pages/email/email.component';
 import { AdminuserComponent } from './pages/adminuser/adminuser.component';
 import { DiscountComponent } from './pages/discount/discount.component';
@@ -48,7 +47,6 @@ import { DiscountComponent } from './pages/discount/discount.component';
         UserDetailComponent,
         ProductEditComponent,
         WishListComponent,
-        MailComponent,
         EmailComponent,
         AdminuserComponent,
         DiscountComponent
