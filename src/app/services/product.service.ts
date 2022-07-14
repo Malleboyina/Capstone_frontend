@@ -131,14 +131,7 @@ export class ProductService {
         xhr.send(formData);
         return xhr;
           
-        // Make http post request over api
-        // with formData as req
-       /**  return this.http.post("http://localhost:8080/api/csv/upload", formData,{
-            headers: {
-              'Content-Type': 'multipart/form-data'
-              //'Content-Type': 'text/csv'
-            },
-          }) */
+        
     }
 
 }

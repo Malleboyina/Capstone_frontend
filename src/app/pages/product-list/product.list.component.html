@@ -3,19 +3,18 @@
    routerLink="/seller/product/new" class="float-right mb-3"><i class="fas fa-plus fa-2x">Add</i>
 </a>
 <a href="/assets/bulk-upload.csv" ><i class="fa fa-download" aria-hidden="true" style="font-size:42px;color:green"></i></a>
-<!-- <button src="" class="float-right mb-3">
-    <i class="fa fa-download" aria-hidden="true" style="font-size:42px;color:green"></i></button> -->
 <form action="/" method="post" enctype="multipart/form-data">
-<input class="form-control" type="file" 
+    <input class="form-control" type="file" 
             (change)="onChange($event)">
-  </form>
+</form>
     <button (click)="onUpload()" 
-        class="btn btn-success">
+        class="btn btn-success" style="margin-bottom: 20px;">
         Upload
-    </button>
+</button>
+    <div>
+        Search <input type = "text" name="search" [(ngModel)]="searchText" placeholder ="Enter Some Text To Search" />
 
-   
-  <!--  Search <input type = "text" name="search" [(ngModel)]="searchText" placeholder ="Enter Some Text To Search" /> -->
+    </div>
 
 <table id="table" class="table table-striped text-center" style="width:100%;">
     <thead>

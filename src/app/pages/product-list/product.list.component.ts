@@ -74,7 +74,6 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
 
     remove(productInfos: ProductInfo[], productInfo: any) {
-        console.log("Manmadha LL"+productInfo);
         this.productService.delelte(productInfo).subscribe(data => {
                 productInfos = productInfos.filter(e => e.productId != productInfo);
             },
