@@ -31,11 +31,6 @@
         <th scopr="col">Delete</th>
     </tr>
     </thead>
-    <!--Search by 
-    <select ng-model="columns" ng-options="e for e in headers">
-        <option value=""></option>
-    </select>
-    Search <input type = "text" ng-model ="Search[columns]" placeholder ="Enter Some Text To Search" />-->
     <tbody>
     <tr *ngFor="let productInfo of page?.content | filter:searchText">
         <th class="align-middle" scope="row">
@@ -58,10 +53,10 @@
                 Delete</button>
             <!-- <button  routerLink="/seller/product/{{productInfo.productId}}/delete" class="btn btn-danger">Delete</button> -->
         </td>
-        <!-- <td class="align-middle">
+        <td class="align-middle">
             <button (click)=onSubmit() [disabled]="(productInfo.productStock >10)? true:false" class="btn btn-success">Email</button>
-           <!-- <a  [ngClass]="{'isDisabled':'(productInfo.productStock >10)? true:false'}"style="display: block" class="isDisabled"  routerLink="/email">Email</a>-->
-        <!-- </td>  -->
+           <a  [ngClass]="{'isDisabled':'(productInfo.productStock >10)? true:false'}"style="display: block" class="isDisabled"  routerLink="/email"></a>
+        </td> 
 
     </tbody>
 </table>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-email',
@@ -8,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class EmailComponent implements OnInit {
 
-  constructor(private https: HttpClient){ }
+  constructor(private https: HttpClient,private router:Router){ }
 
   ngOnInit() {
   }
@@ -26,7 +27,6 @@ export class EmailComponent implements OnInit {
   
 
   onSubmit(){
-    console.log(this.dataset);
     this.https.post<Details>('http://localhost:8080/api/sendMail', this.dataset).subscribe(
         res => {
           this.dataset = res;
@@ -37,6 +37,7 @@ export class EmailComponent implements OnInit {
           this.dataset.subject = '';
           this.dataset.msgBody = '';
         });
+    this.router.navigate(['/seller/product']);
   }
 }
 interface Details{
